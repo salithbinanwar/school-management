@@ -13,7 +13,8 @@ connectDB()
 
 app.use(notFound);
 app.use(errorHandler);
-
+app.use(express.json)
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
