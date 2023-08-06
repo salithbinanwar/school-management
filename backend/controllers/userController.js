@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler"
-
+import User from "../models/userModel.js";
 
 //* desc: Auth user & get token
 //? method: POST 
@@ -8,9 +8,11 @@ import asyncHandler from "express-async-handler"
 
 
 const authUser = asyncHandler(async (req, res) => {
-    
     res.json({ message: "authenticated" });
 })
+
+
+
 
 
 //* desc: delete user
@@ -19,8 +21,12 @@ const authUser = asyncHandler(async (req, res) => {
 //! @access Public
 
 const registerUser = asyncHandler(async (req, res) => {
-    res.json({ message: "user registered" });
+    const { name, email, password } = req.body;
+    console.log(name, email, password)
 })
+
+
+
 
 
 
