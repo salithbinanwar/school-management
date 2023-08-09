@@ -8,20 +8,44 @@ import User from "../models/userModel.js";
 
 
 const authUser = asyncHandler(async (req, res) => {
-    res.json({ message: "authenticated" });
+res.json({ message: "user authenticated" });
 })
 
 
 
 
 
-//* desc: delete user
+//* desc: register a new user
 //? method: POST 
 //? route:/api/users/auth
 //! @access Public
 
 const registerUser = asyncHandler(async (req, res) => {
-    const {name, email, password} = req.body;
+    const {name , email, password} = req.body;
+    const userExists = await User.findOne({email});
+
+
+    if(userExists){
+        res.status(400);
+        throw new Error('user all ready exists');
+}
+    const user = await User.create({
+        name,
+        email,
+        password
+    })
+    if(user){
+        res.status(201).json({
+            _id: user.id,
+            name: user.name,
+            email: user.email,
+        })
+    }else{
+        res.status(400);
+        throw new Error('invalid user data');
+    }
+
+   
     
 })
 

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "server": "node ./backend/server.js",
-    "dev:server": "nodemon ./backend/server.js"
+    "dev:server": "nodemon ./backend/server.js",
+    "dev:watch": "node --watch ./backend/server.js"
   },
   "keywords": [],
   "author": "",
