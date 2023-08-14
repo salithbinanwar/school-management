@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
-app.use(notFound);
 app.use(errorHandler);
+app.use(notFound);
 
 connectDB()
 
